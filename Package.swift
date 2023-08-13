@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "steam-engine",
+    name: "steam-press",
     platforms: [
        .macOS(.v13)
     ],
@@ -12,7 +12,7 @@ let package = Package(
         // 🗄 An ORM for SQL and NoSQL databases.
         .package(url: "https://github.com/vapor/fluent.git", from: "4.8.0"),
         // ἳ1 Fluent driver for Mongo.
-        .package(url: "https://github.com/vapor/fluent-mongo-driver.git", from: "1.0.0"),
+        .package(url: "https://github.com/vapor/fluent-postgres-driver.git", from: "2.0.0"),
         // 🍃 An expressive, performant, and extensible templating language built for Swift.
         .package(url: "https://github.com/vapor/leaf.git", from: "4.2.4"),
     ],
@@ -21,7 +21,7 @@ let package = Package(
             name: "App",
             dependencies: [
                 .product(name: "Fluent", package: "fluent"),
-                .product(name: "FluentMongoDriver", package: "fluent-mongo-driver"),
+                .product(name: "FluentPostgresDriver", package: "fluent-postgres-driver"),
                 .product(name: "Leaf", package: "leaf"),
                 .product(name: "Vapor", package: "vapor")
             ]
