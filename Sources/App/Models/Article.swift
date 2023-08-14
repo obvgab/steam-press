@@ -9,18 +9,13 @@ import Fluent
 final class Article: Model {
     static let schema = "articles"
     
-    @ID(custom: "path", generatedBy: .user) // Path must be unique, can be used as identifier
-    var id: String?
+    @ID(custom: "path", generatedBy: .user) var id: String? // Path must be unique, can be used as identifier
+    @Field(key: "name") var name: String
+    @Field(key: "author") var author: String
+    @Field(key: "created") var created: Date
+    @Field(key: "edited") var edited: [Date] // Individual times an article was edited. Make this collapsable view
     
-    @Field(key: "name")
-    var name: String
-    @Field(key: "author")
-    var author: String
-    @Field(key: "created")
-    var created: Date
-    @Field(key: "edited")
-    var edited: [Date] // Individual times an article was edited. Make this collapsable view
-    
+    init() {}
     init(id: String, name: String, author: String, created: Date = Date.now, edited: [Date] = []) {
         self.id = id
         self.name = name
@@ -28,5 +23,4 @@ final class Article: Model {
         self.created = created
         self.edited = edited
     }
-    init() {}
 }

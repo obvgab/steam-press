@@ -6,7 +6,13 @@ func routes(_ app: Application) throws {
         try await req.view.render("index", ["title": "Hello Vapor!"])
     }
 
-    app.get("hello") { req async -> String in
-        "Hello, world!"
+    try app.register(collections: AdminController())
+}
+
+extension Application {
+    func register(collections: RouteCollection...) throws {
+        for collection in collections {
+            try self.register(collection: collection)
+        }
     }
 }

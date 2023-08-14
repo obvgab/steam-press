@@ -6,18 +6,22 @@
 import Foundation
 import Fluent
 
-struct CreateArticles: AsyncMigration {
-    func prepare(on database: Database) async throws {
-        try await database.schema("articles")
-            .id()
-            .field("name", .string)
-            .field("author", .string)
-            .field("created", .date)
-            .field("edited", .array(of: .date))
-            .create()
-    }
-
-    func revert(on database: Database) async throws { // purge articles
-        try await database.schema("articles").delete()
+extension Article {
+    struct Migration: AsyncMigration {
+        var name: String { "CreateArticles" }
+        
+        func prepare(on database: Database) async throws {
+            try await database.schema("articles")
+                .id()
+                .field("name", .string)
+                .field("author", .string)
+                .field("created", .date)
+                .field("edited", .array(of: .date))
+                .create()
+        }
+        
+        func revert(on database: Database) async throws { // purge articles
+            try await database.schema("articles").delete()
+        }
     }
 }
