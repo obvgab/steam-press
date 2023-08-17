@@ -13,9 +13,9 @@ public func configure(_ app: Application) async throws {
         url: Environment.get("DATABASE_URL") ?? "postgres://postgres:steampress*@localhost:5432/steampress"
     ), as: .psql)
 
+    app.migrations.add(User.Migration())
     app.migrations.add(Article.Migration())
-    app.migrations.add(Admin.Migration())
-    app.migrations.add(AdminToken.Migration())
+    app.migrations.add(Token.Migration())
 
     app.views.use(.leaf)
 

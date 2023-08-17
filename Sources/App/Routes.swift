@@ -2,7 +2,7 @@ import Fluent
 import Vapor
 
 func routes(_ app: Application) throws {
-    try app.register(collections: AdminController())
+    try app.register(collections: UserManagementController())
 }
 
 extension Application {
