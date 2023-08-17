@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Login</title>
+</head>
+<body>
+  <form method="POST" action="/admin/login">
+    <label for="username">Username</label>
+    <input type="text" id="username" placeholder="Username" name="username" autocomplete="username" required autofocus>
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Password" name="password" autocomplete="current-password" required>
+    <input type="submit" value="Sign In">
+</form>
+</body>
+</html>

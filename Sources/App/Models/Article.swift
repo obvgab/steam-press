@@ -11,15 +11,15 @@ final class Article: Model {
     
     @ID(custom: "path", generatedBy: .user) var id: String? // Path must be unique, can be used as identifier
     @Field(key: "name") var name: String
-    @Field(key: "author") var author: String
+    @Parent(key: "author") var author: User
     @Field(key: "created") var created: Date
     @Field(key: "edited") var edited: [Date] // Individual times an article was edited. Make this collapsable view
     
     init() {}
-    init(id: String, name: String, author: String, created: Date = Date.now, edited: [Date] = []) {
+    init(id: String, name: String, authorID: User.IDValue, created: Date = Date.now, edited: [Date] = []) {
         self.id = id
         self.name = name
-        self.author = author
+        self.$author.id = authorID
         self.created = created
         self.edited = edited
     }

@@ -13,15 +13,13 @@ extension Article {
         func prepare(on database: Database) async throws {
             try await database.schema("articles")
                 .id()
-                .field("name", .string)
-                .field("author", .string)
+                .field("name", .string, .required)
+                .field("author", .uuid, .references("users", "id"), .required)
                 .field("created", .date)
                 .field("edited", .array(of: .date))
                 .create()
         }
         
-        func revert(on database: Database) async throws { // purge articles
-            try await database.schema("articles").delete()
-        }
+        func revert(on database: Database) async throws { try await database.schema("articles").delete() }
     }
 }
