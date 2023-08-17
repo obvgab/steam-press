@@ -27,8 +27,14 @@ final class User: Model, Content, ModelAuthenticatable {
         case debug // for developing
     }
     
+    struct Create: Content {
+        let email: String
+        let name: String
+        let password: String
+    }
+    
     init() {}
-    init(id: UUID? = nil, name: String, passwordHash: String, privileges: [User.Privilege] = .Preset.READER) {
+    init(id: UUID? = nil, email: String, name: String, passwordHash: String, privileges: [User.Privilege] = .Preset.READER) {
         self.id = id
         self.email = email
         self.name = name
