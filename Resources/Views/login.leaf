@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<form method="POST" action="/user/login">
+    <label for="email">Email</label>
+    <input type="text" id="email" placeholder="Email" name="email" autocomplete="email" required autofocus>
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Password" name="password" autocomplete="current-password" required>
+    <input type="submit" value="Sign In">
+</form>
+<form method="POST" action="/user">
+    <label for="email">Email</label>
+    <input type="text" id="email" placeholder="Email" name="email" autocomplete="email" required autofocus>
+    <label for="fullname">Full Name</label>
+    <input type="text" id="fullname" placeholder="Full Name" name="fullname" autocomplete="name" required autofocus>
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Password" name="password" autocomplete="current-password" required>
+    <input type="submit" value="Sign In">
+</form>
+</html>
